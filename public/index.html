@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notivox - Enregistrement Audio et Transcription</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎙️ Notivox</h1>
+            <p class="subtitle">Enregistrement audio et génération de rapports intelligents</p>
+        </header>
+
+        <main>
+            <!-- Section d'enregistrement -->
+            <div class="recording-section">
+                <div class="status-card">
+                    <div class="status-indicator" id="statusIndicator">
+                        <span class="status-dot"></span>
+                        <span id="statusText">Prêt à enregistrer</span>
+                    </div>
+                    <div class="timer" id="timer">00:00:00</div>
+                    <div class="max-duration">Durée maximale: 120 minutes</div>
+                </div>
+
+                <div class="controls">
+                    <button id="startBtn" class="btn btn-primary">
+                        <span class="btn-icon">🔴</span>
+                        Démarrer l'enregistrement
+                    </button>
+                    <button id="stopBtn" class="btn btn-secondary" disabled>
+                        <span class="btn-icon">⏹️</span>
+                        Arrêter
+                    </button>
+                    <button id="resetBtn" class="btn btn-tertiary" disabled>
+                        <span class="btn-icon">🔄</span>
+                        Réinitialiser
+                    </button>
+                </div>
+
+                <!-- Barre de progression -->
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+
+                <!-- Section Audio -->
+                <div class="audio-preview" id="audioPreview" style="display: none;">
+                    <h3>Aperçu de l'enregistrement</h3>
+                    <audio id="audioPlayer" controls></audio>
+                    <button id="transcribeBtn" class="btn btn-success">
+                        <span class="btn-icon">✨</span>
+                        Générer le rapport
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section des résultats -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>📊 Rapport généré</h2>
+                <div class="result-card">
+                    <div class="result-metadata">
+                        <span class="metadata-item">
+                            <strong>Durée:</strong> <span id="audioDuration">-</span>
+                        </span>
+                        <span class="metadata-item">
+                            <strong>Langue:</strong> <span id="audioLanguage">-</span>
+                        </span>
+                    </div>
+                    <div class="report-content" id="reportContent"></div>
+                    <button id="downloadBtn" class="btn btn-primary">
+                        <span class="btn-icon">💾</span>
+                        Télécharger le rapport
+                    </button>
+                </div>
+            </div>
+
+            <!-- Messages d'erreur -->
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+        </main>
+
+        <footer>
+            <p>Propulsé par OpenAI Whisper & GPT</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
